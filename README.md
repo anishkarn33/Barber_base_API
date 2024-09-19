@@ -22,7 +22,7 @@ Setup and Installation
    
     python -m venv .venv
 
-    .venv\Scripts\Activate.ps1  # On Windows: .venv\Scripts\activate
+    .venv\Scripts\Activate.ps1  # On Windows
 
 3. Install dependencies:
    
