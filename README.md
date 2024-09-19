@@ -12,46 +12,82 @@ Authentication and authorization for barbers and users.
 Environment variable support with .env files.
 Setup and Installation
 
-1. Clone the repository:
-   
-    git clone https://github.com/anishkarn33/Barber_base_API.git
+## Tools and Libraries
 
-    cd Barber_base_API
+- Python 3.9
+- FastAPI (modern, fast (high-performance), web framework for building APIs with Python 3.7+)
+- asyncpg (asyncio PostgreSQL driver)
+- alembic (database migration tool)
+- SQLAlchemy (SQL toolkit and Object-Relational Mapping)
+- PostgreSQL14
 
-2. Create and activate a virtual environment:
+## Clone the repository:
+
+```bash
+git clone https://github.com/anishkarn33/Barber_base_API.git
+``` 
+
+### Create and activate a virtual environment:
    
     python -m venv .venv
 
     .venv\Scripts\Activate.ps1  # On Windows
 
-3. Install dependencies:
+### Install the required packages
    
-    pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
-4. Set up environment variables:
-   
-   Create a .env file in the root directory and add the following details:
 
-    DATABASE_URL=your_database_url
-    SECRET_KEY=your_secret_key
+### Create a new migration repository
 
-5. Apply database migrations:
+```bash
+alembic init alembic
+```
 
-   alembic upgrade head
+### Configure the database connection
 
-6. Run the FastAPI server:
+Edit the `.env` file and set the database parameters
 
+
+### Apply the migration
+
+```bash
+alembic upgrade head
+```
+
+### Apply the migration with data included
+
+```bash
+alembic -x data=true upgrade head
+```
+
+### Downgrade the migration
+
+```bash
+alembic downgrade -1
+```
+
+### Show the migration history
+
+```bash
+alembic history
+```
+
+### Show the migration status
+
+```bash
+alembic current
+```
+
+### Show the migration branches
+
+```bash
+alembic branches
+```
+
+### Run the FastAPI server:
+```bash
    uvicorn main:app --reload
-
- ## API Endpoints
-
-Register Salon - POST /salons/register/
-
-List Salons - GET /salons/
-
-Get Salon Details - GET /salons/{id}/
-
-Book Appointment - POST /appointments/
-
-List Appointments - GET /appointments/
-
+```
